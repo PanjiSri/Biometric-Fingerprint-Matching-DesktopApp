@@ -26,15 +26,29 @@ static class Program
 
         string text = "ngawi musikal cik";
         string pattern = "musik";
-        int position = KMP.KmpMatch(text, pattern);
+        int positionKMP = KMP.KmpMatch(text, pattern);
+        int positionBM = BM.BmMatch(text, pattern);
 
-        if (position == -1)
+        Console.WriteLine("KMP");
+        if (positionKMP == -1)
         {
             Console.WriteLine("Pattern not found");
         }
         else
         {
-            Console.WriteLine($"Pattern starts at position {position + 1}");
+            Console.WriteLine($"Pattern starts at position {positionKMP + 1}");
         }
+
+        Console.WriteLine("BM");
+        if (positionBM == -1)
+        {
+            Console.WriteLine("Pattern not found");
+        }
+        else
+        {
+            Console.WriteLine($"Pattern starts at position {positionBM + 1}");
+        }
+
+
     }    
 }

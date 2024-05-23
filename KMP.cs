@@ -2,7 +2,7 @@ namespace Tubes3_let_me_seedik;
 
 using System;
 
-public static class KMP
+public class KMP
 {
 
 	public static void cetakTes()
