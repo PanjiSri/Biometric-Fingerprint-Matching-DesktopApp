@@ -49,6 +49,13 @@ static class Program
             Console.WriteLine($"Pattern starts at position {positionBM + 1}");
         }
 
+        Console.Write("LevensteinDistance = ");
+        int distance = Levenshtein.LevenshteinDistance(text, pattern);
+        Console.WriteLine(distance);
+        Console.Write("Persentase = ");
+        float persen = Levenshtein.PersentaseKemiripan(distance, text, pattern);
+        Console.WriteLine(persen);
+
 
     }    
 }
