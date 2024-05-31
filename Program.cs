@@ -56,6 +56,9 @@ static class Program
         string[] nama_dummy = new string[] {"sigit rendang", "mr ironi", "mas ambatron", "ngawi musikal", "ihsan ganteng"};
         string[] path_dummy = new string[] {filePaths[0], filePaths[1], filePaths[2], filePaths[3], filePaths[4]};
 
+        string[] nama_dummy_alay = new string[] {"5gt rnDn6", "Mr 1R0n1", "Ma5 ambtroN", "n6w mu5k4l", "1h54n 6nTEn6"};
+        string[] path_dummy_alay = new string[] {filePaths[0], filePaths[1], filePaths[2], filePaths[3], filePaths[4]};
+
         // foreach(var nama in nama_dummy){
         //     Console.WriteLine(nama);
         // }
@@ -74,6 +77,7 @@ static class Program
         // dbManager.ClearFingerprintTable();
 
         // dbManager.SeedDatabase(nama_dummy, path_dummy);
+        // dbManager.SeedDatabase(nama_dummy_alay, path_dummy_alay);
 
         // string[] biodata = dbManager.GetBiodata(path_hasil);
 
@@ -100,11 +104,16 @@ static class Program
         // // dbManager.OpenConnection();
 
         string[] allPath = dbManager.GetAllPath();
+        string[] allName = dbManager.GetAllName();
 
-        string test_dummy = filePaths[4];
+        string test_dummy = filePaths[2];
 
-        // foreach(var path in allPath){
-        //     Console.WriteLine(path);
+        // // foreach(var path in allPath){
+        // //     Console.WriteLine(path);
+        // // }
+
+        // foreach(var name in allName){
+        //     Console.WriteLine(name);
         // }
 
         int position = -1;
@@ -132,7 +141,22 @@ static class Program
             return;
         }
 
-        string[] real_biodata = dbManager.GetBiodata(real_name);
+        Regexp r = new Regexp();
+        string name_regex = r.createRegex(real_name);
+        string alay_name = null;
+        foreach (var name in allName) {
+            if (r.isMatch(name, name_regex)) {
+                alay_name = name;
+                break;
+            }
+        }
+    
+        if (alay_name == null) {
+            Console.WriteLine("nama tidak ada");
+            return;
+        }
+
+        string[] real_biodata = dbManager.GetBiodata(alay_name);
 
         if (real_biodata != null)
         {

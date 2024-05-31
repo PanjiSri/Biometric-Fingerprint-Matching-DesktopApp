@@ -237,4 +237,35 @@ public class DatabaseManager
         return paths.ToArray(); 
     }
 
+    public string[] GetAllName()
+    {
+        List<string> names = new List<string>();  
+
+        try
+        {
+            OpenConnection();
+            string query = "SELECT nama FROM biodata";
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())  
+            {
+                string name = reader["nama"].ToString();
+                names.Add(name); 
+            }
+            reader.Close();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+            throw;
+        }
+        finally
+        {
+            CloseConnection();
+        }
+
+        return names.ToArray(); 
+    }
+
 }

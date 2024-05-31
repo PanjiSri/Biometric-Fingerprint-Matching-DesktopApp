@@ -1,4 +1,6 @@
-﻿using Microsoft.SqlServer.Server;
+﻿namespace Tubes3_let_me_seedik;
+
+using Microsoft.SqlServer.Server;
 using System.Text.RegularExpressions;
 using System;
 using System.Text;
