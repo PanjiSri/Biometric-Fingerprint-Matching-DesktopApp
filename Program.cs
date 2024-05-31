@@ -51,6 +51,15 @@ static class Program
 
         string folderPath = "./tes";
 
+        // Ini buat dapet gambar UJI
+
+        // string folderPath = "./citra";
+
+        // List<string> filePaths = FileManager.GetFilePaths(folderPath);
+
+        // string test_dummy = filePaths[2];
+
+
         List<string> filePaths = FileManager.GetFilePaths(folderPath);
 
         string[] nama_dummy = new string[] {"sigit rendang", "mr ironi", "mas ambatron", "ngawi musikal", "ihsan ganteng"};
@@ -106,8 +115,6 @@ static class Program
         string[] allPath = dbManager.GetAllPath();
         string[] allName = dbManager.GetAllName();
 
-        string test_dummy = filePaths[2];
-
         // // foreach(var path in allPath){
         // //     Console.WriteLine(path);
         // // }
@@ -131,6 +138,8 @@ static class Program
             if (position != -1)
             {
                 Console.WriteLine($"Pattern starts at position {position + 1}");
+
+                //PATH ITU ISINYA PATH KE GAMBARNYA
                 real_name = dbManager.GetName(path);
                 break;
             }
@@ -138,7 +147,22 @@ static class Program
 
         if(position == -1){
             Console.WriteLine("tidak ketemu");
-            return;
+            foreach(var path in allPath){
+                string wholeImage = asciiConverter.ConvertToASCII(path);
+                string bestSegment = asciiConverter.GetBestSegment(test_dummy);
+
+                int distance = Levenshtein.LevenshteinDistance(wholeImage, bestSegment);
+
+                float persent = Levenshtein.PersentaseKemiripan(distance, wholeImage, bestSegment);
+
+                Console.WriteLine($"{path} {distance} {persent}");
+
+                if(persent > 80){  
+                    //INI PATH NYA DIPAKE BUAT GUI
+                    real_name = dbManager.GetName(path);
+                    break;
+                }
+            }
         }
 
         Regexp r = new Regexp();
@@ -156,6 +180,7 @@ static class Program
             return;
         }
 
+        //INI REAL_BIODATA BUAT BIODATANYA
         string[] real_biodata = dbManager.GetBiodata(alay_name);
 
         if (real_biodata != null)
