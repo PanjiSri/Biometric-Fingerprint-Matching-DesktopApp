@@ -48,15 +48,113 @@ static class Program
 
         // Application.Run(new Form1());
 
-        DatabaseManager dbManager = new DatabaseManager("server=127.0.0.1; port=3307; user=root; password=baraja16!; database=database_sidik_jari");
-
-        dbManager.OpenConnection();
 
         string folderPath = "./tes";
 
         List<string> filePaths = FileManager.GetFilePaths(folderPath);
 
-        GrayscaleToASCIIConverter asciiConverter = new GrayscaleToASCIIConverter();
+        string[] nama_dummy = new string[] {"sigit rendang", "mr ironi", "mas ambatron", "ngawi musikal", "ihsan ganteng"};
+        string[] path_dummy = new string[] {filePaths[0], filePaths[1], filePaths[2], filePaths[3], filePaths[4]};
+
+        // foreach(var nama in nama_dummy){
+        //     Console.WriteLine(nama);
+        // }
+
+        // foreach(var path in path_dummy){
+        //     Console.WriteLine(path);
+        // }
+
+        DatabaseManager dbManager = new DatabaseManager("server=127.0.0.1; port=3307; user=root; password=GANTI; database=database_sidik_jari");
+
+        // string path_hasil = dbManager.GetName(filePaths[0]);
+
+        // Console.WriteLine(path_hasil);
+
+        // dbManager.ClearBiodataTable();
+        // dbManager.ClearFingerprintTable();
+
+        // dbManager.SeedDatabase(nama_dummy, path_dummy);
+
+        // string[] biodata = dbManager.GetBiodata(path_hasil);
+
+        // if (biodata != null)
+        // {
+        //     Console.WriteLine("Biodata ditemukan:");
+        //     Console.WriteLine($"NIK: {biodata[0]}");
+        //     Console.WriteLine($"Nama: {biodata[1]}");
+        //     Console.WriteLine($"Tempat Lahir: {biodata[2]}");
+        //     Console.WriteLine($"Tanggal Lahir: {biodata[3]}");
+        //     Console.WriteLine($"Jenis Kelamin: {biodata[4]}");
+        //     Console.WriteLine($"Golongan Darah: {biodata[5]}");
+        //     Console.WriteLine($"Alamat: {biodata[6]}");
+        //     Console.WriteLine($"Agama: {biodata[7]}");
+        //     Console.WriteLine($"Status Perkawinan: {biodata[8]}");
+        //     Console.WriteLine($"Pekerjaan: {biodata[9]}");
+        //     Console.WriteLine($"Kewarganegaraan: {biodata[10]}");
+        // }
+        // else
+        // {
+        //     Console.WriteLine("Biodata tidak ditemukan.");
+        // }
+
+        // // dbManager.OpenConnection();
+
+        string[] allPath = dbManager.GetAllPath();
+
+        string test_dummy = filePaths[4];
+
+        // foreach(var path in allPath){
+        //     Console.WriteLine(path);
+        // }
+
+        int position = -1;
+
+        string real_name = null;
+
+        GrayscaleToASCIIConverter asciiConverter = new GrayscaleToASCIIConverter();        
+
+        foreach(var path in allPath){
+            string wholeImage = asciiConverter.ConvertToASCII(path);
+            string bestSegment = asciiConverter.GetBestSegment(test_dummy);
+
+            position = KMP.KmpMatch(wholeImage, bestSegment);
+
+            if (position != -1)
+            {
+                Console.WriteLine($"Pattern starts at position {position + 1}");
+                real_name = dbManager.GetName(path);
+                break;
+            }
+        }
+
+        if(position == -1){
+            Console.WriteLine("tidak ketemu");
+            return;
+        }
+
+        string[] real_biodata = dbManager.GetBiodata(real_name);
+
+        if (real_biodata != null)
+        {
+            Console.WriteLine("real_biodata ditemukan:");
+            Console.WriteLine($"NIK: {real_biodata[0]}");
+            Console.WriteLine($"Nama: {real_biodata[1]}");
+            Console.WriteLine($"Tempat Lahir: {real_biodata[2]}");
+            Console.WriteLine($"Tanggal Lahir: {real_biodata[3]}");
+            Console.WriteLine($"Jenis Kelamin: {real_biodata[4]}");
+            Console.WriteLine($"Golongan Darah: {real_biodata[5]}");
+            Console.WriteLine($"Alamat: {real_biodata[6]}");
+            Console.WriteLine($"Agama: {real_biodata[7]}");
+            Console.WriteLine($"Status Perkawinan: {real_biodata[8]}");
+            Console.WriteLine($"Pekerjaan: {real_biodata[9]}");
+            Console.WriteLine($"Kewarganegaraan: {real_biodata[10]}");
+        }
+        else
+        {
+            Console.WriteLine("Biodata tidak ditemukan.");
+        }
+
+        // GrayscaleToASCIIConverter asciiConverter = new GrayscaleToASCIIConverter();
 
         // foreach(var path in filePaths){
 
@@ -77,26 +175,26 @@ static class Program
         //     break;
         // }
 
-        String var_dummy = filePaths[0];
-        String var_dummy_2 = filePaths[12];
+        // String var_dummy = filePaths[0];
+        // String var_dummy_2 = filePaths[12];
 
-        Console.WriteLine(var_dummy);
+        // Console.WriteLine(var_dummy);
 
-        string wholeImage = asciiConverter.ConvertToASCII(var_dummy);
-        string bestSegment = asciiConverter.GetBestSegment(var_dummy_2);
+        // string wholeImage = asciiConverter.ConvertToASCII(var_dummy);
+        // string bestSegment = asciiConverter.GetBestSegment(var_dummy_2);
 
-        int position = KMP.KmpMatch(wholeImage, bestSegment);
+        // int position = KMP.KmpMatch(wholeImage, bestSegment);
 
-        if (position == -1)
-        {
-           Console.WriteLine("Pattern not found");
-        }
-        else
-        {
-           Console.WriteLine($"Pattern starts at position {position + 1}");
-        }
+        // if (position == -1)
+        // {
+        //    Console.WriteLine("Pattern not found");
+        // }
+        // else
+        // {
+        //    Console.WriteLine($"Pattern starts at position {position + 1}");
+        // }
 
-        dbManager.ClearFingerprintTable();
+        // dbManager.ClearFingerprintTable();
 
         // dbManager.RetrieveFingerprints();
 
@@ -120,7 +218,6 @@ static class Program
         // }
 
         // string fileContent = File.ReadAllText(formattedPath);
-
 
 
         //dbManager.RetrieveFingerprints();
