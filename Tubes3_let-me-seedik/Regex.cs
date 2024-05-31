@@ -1,48 +1,85 @@
 ﻿using Microsoft.SqlServer.Server;
+using System.Text.RegularExpressions;
 using System;
+using System.Text;
 
-public class Regex
+public class Regexp
 {
     public bool isMatch(string text, string pattern)
     {
-        return isMatchHelper(text, 0, "", pattern, 0);
+        Match match = Regex.Match(text, pattern);
+        return match.Success;
     }
 
-    private bool isMatchHelper(string text, int text_idx, string prefix, string pattern, int pattern_idx)
+    public string createRegex(string text)
     {
-        if (pattern_idx == pattern.Length)
+        StringBuilder pattern = new StringBuilder();
+        foreach (char c in text)
         {
-            return text_idx == text.Length;
+            pattern.Append(charToPattern(c));
         }
-
-        bool firstMatch = (text_idx < text.Length && (pattern[pattern_idx] == text[text_idx] || pattern[pattern_idx] == '.'));
-
-        if (pattern[pattern_idx] == '(' )
-        {
-            pattern_idx++;
-            String sub = "";
-            while (pattern[pattern_idx] != ')' && pattern_idx < pattern.Length)
-            {
-                sub += pattern_idx;
-                pattern_idx++;
-            }
-        } 
-        else if (pattern[pattern_idx] == '[' )
-        {
-            pattern_idx++;
-            String sub = "";
-            while (pattern[pattern_idx] != ']' && pattern_idx < pattern.Length)
-            {
-                sub += pattern_idx;
-                pattern_idx++;
-            }
-        }
-
-        return true;
+        return pattern.ToString();
     }
 
-    private bool checkAllSub(string text, string pattern)
+    private string charToPattern(char c)
     {
-        return true;
+        switch (char.ToLower(c))
+        {
+            case 'a':
+                return "[aA4]?";
+            case 'b':
+                return "[bB8]";
+            case 'c':
+                return "[cC]";
+            case 'd':
+                return "[dD]";
+            case 'e':
+                return "[eE3]?";
+            case 'f':
+                return "[fF]";
+            case 'g':
+                return "[gG69]";
+            case 'h':
+                return "[hH]";
+            case 'i':
+                return "[iI1]?";
+            case 'j':
+                return "[jJ]";
+            case 'k':
+                return "[kK]";
+            case 'l':
+                return "[lL]";
+            case 'm':
+                return "[mM]";
+            case 'n':
+                return "[nN]";
+            case 'o':
+                return "[oO0]?";
+            case 'p':
+                return "[pP]";
+            case 'q':
+                return "[qQ]";
+            case 'r':
+                return "[rR]";
+            case 's':
+                return "[sS5]";
+            case 't':
+                return "[tT7]";
+            case 'u':
+                return "[uU]?";
+            case 'v':
+                return "[vV]";
+            case 'w':
+                return "[wW]";
+            case 'x':
+                return "[xX]";
+            case 'y':
+                return "[yY]";
+            case 'z':
+                return "[zZ2]";
+            case ' ':
+                return "\\s+";
+        }
+        return c.ToString();
     }
 }

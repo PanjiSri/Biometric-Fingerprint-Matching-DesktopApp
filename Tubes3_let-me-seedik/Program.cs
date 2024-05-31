@@ -14,9 +14,10 @@ namespace Tubes3_let_me_seedik
         [STAThread]
         static void Main()
         {
-            Regex r = new Regex();
-            Console.WriteLine(r.isMatch("hai", @"(ha)+."));
-            Console.WriteLine(r.isMatch("hahai", @"(ha)+."));
+            Regexp r = new Regexp();
+            string pattern = r.createRegex("Ibrahim Ihsan Rasyid");
+            Console.WriteLine(pattern);
+            Console.WriteLine(r.isMatch("IbrH1m 1h5aN r5y1d", pattern));
             // Application.EnableVisualStyles();
             // Application.SetCompatibleTextRenderingDefault(false);
             // Application.Run(new Form1());
