@@ -64,7 +64,7 @@ static class Program
         //     Console.WriteLine(path);
         // }
 
-        DatabaseManager dbManager = new DatabaseManager("server=127.0.0.1; port=3307; user=root; password=GANTI; database=database_sidik_jari");
+        DatabaseManager dbManager = new DatabaseManager("server=127.0.0.1; port=3307; user=root; password=baraja16!; database=database_sidik_jari");
 
         // string path_hasil = dbManager.GetName(filePaths[0]);
 
