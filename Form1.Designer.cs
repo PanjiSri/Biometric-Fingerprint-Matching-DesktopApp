@@ -1,4 +1,4 @@
-﻿namespace Tubes3_let_me_seedik;
+namespace Tubes3_let_me_seedik;
 
 partial class Form1
 {
