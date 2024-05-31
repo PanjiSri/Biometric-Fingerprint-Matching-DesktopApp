@@ -126,7 +126,7 @@ static class Program
             string wholeImage = asciiConverter.ConvertToASCII(path);
             string bestSegment = asciiConverter.GetBestSegment(test_dummy);
 
-            position = KMP.KmpMatch(wholeImage, bestSegment);
+            position = BM.BmMatch(wholeImage, bestSegment);
 
             if (position != -1)
             {
