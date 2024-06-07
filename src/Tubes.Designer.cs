@@ -45,6 +45,7 @@ namespace Tubes3_let_me_seedik
             labelFormat = new Label();
             labelData = new Label();
             buttonAboutUs = new System.Windows.Forms.Button();
+            backgroundWorkerSearch = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)pictureBoxbiodata).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxOutput).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxInput).BeginInit();
@@ -78,7 +79,7 @@ namespace Tubes3_let_me_seedik
             // buttonBM
             // 
             buttonBM.Anchor = AnchorStyles.None;
-            buttonBM.Location = new Point(298, 466);
+            buttonBM.Location = new Point(301, 467);
             buttonBM.Margin = new Padding(0, 4, 3, 4);
             buttonBM.Name = "buttonBM";
             buttonBM.Size = new Size(78, 55);
@@ -103,7 +104,8 @@ namespace Tubes3_let_me_seedik
             // pictureBoxbiodata
             // 
             pictureBoxbiodata.Anchor = AnchorStyles.None;
-            pictureBoxbiodata.Image = Properties.Resources.Screenshot_2024_05_31_140236;
+            pictureBoxbiodata.Image = src.Properties.Resources.Screenshot_2024_05_31_140236;
+            pictureBoxbiodata.InitialImage = src.Properties.Resources.loading_icon_wait_vector_260nw_1722568561;
             pictureBoxbiodata.Location = new Point(532, 106);
             pictureBoxbiodata.Margin = new Padding(3, 4, 3, 4);
             pictureBoxbiodata.Name = "pictureBoxbiodata";
@@ -111,6 +113,7 @@ namespace Tubes3_let_me_seedik
             pictureBoxbiodata.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxbiodata.TabIndex = 8;
             pictureBoxbiodata.TabStop = false;
+            pictureBoxbiodata.WaitOnLoad = true;
             pictureBoxbiodata.Click += pictureBoxbiodata_Click;
             // 
             // labelWaktu
@@ -126,7 +129,8 @@ namespace Tubes3_let_me_seedik
             // pictureBoxOutput
             // 
             pictureBoxOutput.Anchor = AnchorStyles.None;
-            pictureBoxOutput.Image = Properties.Resources.Screenshot_2024_05_31_140225;
+            pictureBoxOutput.Image = src.Properties.Resources.Screenshot_2024_05_31_140225;
+            pictureBoxOutput.InitialImage = src.Properties.Resources.loading_icon_wait_vector_260nw_1722568561;
             pictureBoxOutput.Location = new Point(282, 95);
             pictureBoxOutput.Margin = new Padding(3, 4, 3, 4);
             pictureBoxOutput.Name = "pictureBoxOutput";
@@ -169,7 +173,7 @@ namespace Tubes3_let_me_seedik
             // pictureBoxInput
             // 
             pictureBoxInput.Anchor = AnchorStyles.None;
-            pictureBoxInput.Image = Properties.Resources.Screenshot_2024_05_31_140208;
+            pictureBoxInput.Image = src.Properties.Resources.Screenshot_2024_05_31_140208;
             pictureBoxInput.Location = new Point(37, 95);
             pictureBoxInput.Margin = new Padding(3, 4, 3, 4);
             pictureBoxInput.Name = "pictureBoxInput";
@@ -220,6 +224,11 @@ namespace Tubes3_let_me_seedik
             buttonAboutUs.Text = "About us";
             buttonAboutUs.UseVisualStyleBackColor = true;
             // 
+            // backgroundWorkerSearch
+            // 
+            backgroundWorkerSearch.DoWork += backgroundWorkerSearch_DoWork;
+            backgroundWorkerSearch.RunWorkerCompleted += backgroundWorkerSearch_RunWorkerCompleted;
+            // 
             // Tubes
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -253,6 +262,11 @@ namespace Tubes3_let_me_seedik
             PerformLayout();
         }
 
+        private void BackgroundWorkerSearch_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         private System.Windows.Forms.Button buttonCitra;
@@ -270,6 +284,7 @@ namespace Tubes3_let_me_seedik
         private System.Windows.Forms.Label labelFormat;
         private System.Windows.Forms.Label labelData;
         private System.Windows.Forms.Button buttonAboutUs;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerSearch;
     }
 }
 

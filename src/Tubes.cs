@@ -116,8 +116,8 @@ namespace Tubes3_let_me_seedik
 
         private void buttonBM_Click(object sender, EventArgs e)
         {
-            /*            buttonBM.BackColor = System.Drawing.Color.LightBlue;
-                        buttonKMP.BackColor = System.Drawing.SystemColors.Control;*/
+            /*buttonBM.BackColor = System.Drawing.Color.LightBlue;
+            buttonKMP.BackColor = System.Drawing.SystemColors.Control;*/
             buttonBM.Enabled = false;
             buttonKMP.Enabled = true;
             isKMP = false;
@@ -137,49 +137,60 @@ namespace Tubes3_let_me_seedik
             buttonSearch.Enabled = false;
             // Thread.Sleep(3000);
             Stopwatch timer = Stopwatch.StartNew();
+            // pictureBoxOutput.Image = src.Properties.Resources.loading_icon_wait_vector_260nw_1722568561;
+            // pictureBoxbiodata.Image = src.Properties.Resources.loading_icon_wait_vector_260nw_1722568561;
             BackEnd backEnd = new BackEnd(isKMP);
             timer.Stop();
+            if (backEnd.persentase >= 80)
+            {
+                float kemiripan = backEnd.persentase;
+                labelNilaiKemiripan.Text = ": " + Math.Round(kemiripan, 2).ToString() + " %";
+                pictureBoxbiodata.Image = null;
+                // string nik = "1234567890123456";
+                // string nama = "Rijal";
+                // string tempatlahir = "Bandung";
+                // string tanggallahir = "31 Januari 2001";
+                // string gender = "Laki-laki";
+                // string goldar = "O";
+                // string alamat = "Cisitu";
+                // string agama = "Islam";
+                // string status = "Menikah";
+                // string pekerjaan = "PNS";
+                // string kwn = "Indonesia";
+                string nik = backEnd.biodata[0];
+                string nama = backEnd.biodata[1];
+                string tempatlahir = backEnd.biodata[2];
+                string tanggallahir = backEnd.biodata[3];
+                string gender = backEnd.biodata[4];
+                string goldar = backEnd.biodata[5];
+                string alamat = backEnd.biodata[6];
+                string agama = backEnd.biodata[7];
+                string status = backEnd.biodata[8];
+                string pekerjaan = backEnd.biodata[9];
+                string kwn = backEnd.biodata[10];
+                // labelFormat.Text = $"NIK : {nik}\nNama : {nama}\nTempat Lahir : {tempatlahir}\nTanggal Lahir : {tanggallahir}\nJenis Kelamin : {gender}\nGolongan Darah : {goldar}\nAlamat : {alamat}\nAgama : {agama}\nStatus Perkawinan : {status}\nPekerjaan : {pekerjaan}\nKewarganegaraan : {kwn}";
+                labelFormat.Text = "NIK\nNama\nTempat Lahir\nTanggal Lahir\nJenis Kelamin\nGolongan Darah\nAlamat\nAgama\nStatus Perkawinan\nPekerjaan\nKewarganegaraan";
+                labelFormat.Visible = true;
+                labelData.Visible = true;
+                labelData.Text = $": {nik}\n: {nama}\n: {tempatlahir}\n: {tanggallahir}\n: {gender}\n: {goldar}\n: {alamat}\n: {agama}\n: {status}\n: {pekerjaan}\n: {kwn}";
+                pictureBoxbiodata.BorderStyle = BorderStyle.FixedSingle;
+                // labelFormat.BorderStyle = BorderStyle.FixedSingle;
+                // labelData.BorderStyle = BorderStyle.FixedSingle;
+                /*labelFormat.Font = new Font("Microsoft Sans Serif", 8, FontStyle.Regular);*/
+                /*String path = Path.GetFullPath("../../tes"); 
+                pictureBoxOutput.Image = new Bitmap(Path.Combine(path, "100__M_Left_index_finger.bmp"));*/
+                pictureBoxOutput.Image = new Bitmap(backEnd.pathGambar);
+                // pictureBoxOutput.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+            else
+            {
+                pictureBoxOutput.Image = src.Properties.Resources.download;
+                pictureBoxbiodata.Image = src.Properties.Resources.download;
+                labelNilaiKemiripan.Text = ": -";
+            }
             long timeSpan = timer.ElapsedMilliseconds;
-            int waktu = (int) timeSpan;
-            float kemiripan = backEnd.persentase;
+            int waktu = (int)timeSpan;
             labelNilaiWaktu.Text = ": " + waktu.ToString() + " ms";
-            labelNilaiKemiripan.Text = ": " + Math.Round(kemiripan, 2).ToString() + " %";
-            pictureBoxbiodata.Image = null;
-            // string nik = "1234567890123456";
-            // string nama = "Rijal";
-            // string tempatlahir = "Bandung";
-            // string tanggallahir = "31 Januari 2001";
-            // string gender = "Laki-laki";
-            // string goldar = "O";
-            // string alamat = "Cisitu";
-            // string agama = "Islam";
-            // string status = "Menikah";
-            // string pekerjaan = "PNS";
-            // string kwn = "Indonesia";
-            string nik = backEnd.biodata[0];
-            string nama = backEnd.biodata[1];
-            string tempatlahir = backEnd.biodata[2];
-            string tanggallahir = backEnd.biodata[3];
-            string gender = backEnd.biodata[4];
-            string goldar = backEnd.biodata[5];
-            string alamat = backEnd.biodata[6];
-            string agama = backEnd.biodata[7];
-            string status = backEnd.biodata[8];
-            string pekerjaan = backEnd.biodata[9];
-            string kwn = backEnd.biodata[10];
-            // labelFormat.Text = $"NIK : {nik}\nNama : {nama}\nTempat Lahir : {tempatlahir}\nTanggal Lahir : {tanggallahir}\nJenis Kelamin : {gender}\nGolongan Darah : {goldar}\nAlamat : {alamat}\nAgama : {agama}\nStatus Perkawinan : {status}\nPekerjaan : {pekerjaan}\nKewarganegaraan : {kwn}";
-            labelFormat.Text = "NIK\nNama\nTempat Lahir\nTanggal Lahir\nJenis Kelamin\nGolongan Darah\nAlamat\nAgama\nStatus Perkawinan\nPekerjaan\nKewarganegaraan";
-            labelFormat.Visible = true;
-            labelData.Visible = true;
-            labelData.Text = $": {nik}\n: {nama}\n: {tempatlahir}\n: {tanggallahir}\n: {gender}\n: {goldar}\n: {alamat}\n: {agama}\n: {status}\n: {pekerjaan}\n: {kwn}";
-            pictureBoxbiodata.BorderStyle = BorderStyle.FixedSingle;
-            // labelFormat.BorderStyle = BorderStyle.FixedSingle;
-            // labelData.BorderStyle = BorderStyle.FixedSingle;
-            /*labelFormat.Font = new Font("Microsoft Sans Serif", 8, FontStyle.Regular);*/
-            /*String path = Path.GetFullPath("../../tes"); 
-            pictureBoxOutput.Image = new Bitmap(Path.Combine(path, "100__M_Left_index_finger.bmp"));*/
-            pictureBoxOutput.Image = new Bitmap(backEnd.pathGambar);
-            // pictureBoxOutput.SizeMode = PictureBoxSizeMode.Zoom;
             buttonSearch.Enabled = true;
         }
 
@@ -194,6 +205,16 @@ namespace Tubes3_let_me_seedik
         }
 
         private void pictureBoxOutput_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void backgroundWorkerSearch_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void backgroundWorkerSearch_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
 
         }

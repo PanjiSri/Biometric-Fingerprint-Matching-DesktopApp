@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Tubes3_let_me_seedik
 {
-    public partial class Form1 : Form
+    public partial class AboutUs : Form
     {
-        public Form1()
+        public AboutUs()
         {
             InitializeComponent();
         }
