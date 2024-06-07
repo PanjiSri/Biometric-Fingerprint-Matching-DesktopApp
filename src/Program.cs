@@ -43,10 +43,10 @@ static class Program
         //    Console.WriteLine($"Pattern starts at position {position + 1}");
         //}
 
-        //Application.EnableVisualStyles();
-        //Application.SetCompatibleTextRenderingDefault(false);
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
 
-        // Application.Run(new Form1());
+        Application.Run(new Tubes());
 
 
         string folderPath = "./tes";
@@ -57,10 +57,10 @@ static class Program
 
         // List<string> filePaths = FileManager.GetFilePaths(folderPath);
 
-        // string test_dummy = filePaths[2];
 
 
         List<string> filePaths = FileManager.GetFilePaths(folderPath);
+        string test_dummy = filePaths[2];
 
         string[] nama_dummy = new string[] {"sigit rendang", "mr ironi", "mas ambatron", "ngawi musikal", "ihsan ganteng"};
         string[] path_dummy = new string[] {filePaths[0], filePaths[1], filePaths[2], filePaths[3], filePaths[4]};
@@ -76,7 +76,7 @@ static class Program
         //     Console.WriteLine(path);
         // }
 
-        DatabaseManager dbManager = new DatabaseManager("server=127.0.0.1; port=3307; user=root; password=baraja16!; database=database_sidik_jari");
+        DatabaseManager dbManager = new DatabaseManager("Server=127.0.0.1; User=root; Password=; Database=sidik");
 
         // string path_hasil = dbManager.GetName(filePaths[0]);
 

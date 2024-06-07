@@ -25,7 +25,7 @@ public class GrayscaleToASCIIConverter
                 asciiImage.Append(asciiChar);
             }
         }
-
+        bitmap.Dispose();
         return asciiImage.ToString();
     }
 
