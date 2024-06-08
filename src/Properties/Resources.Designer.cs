@@ -63,19 +63,19 @@ namespace Tubes3_let_me_seedik.src.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap loading_icon_wait_vector_260nw_1722568561 {
-            get {
-                object obj = ResourceManager.GetObject("loading-icon-wait-vector-260nw-1722568561", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap download {
             get {
                 object obj = ResourceManager.GetObject("download", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap loading_icon_wait_vector_260nw_1722568561 {
+            get {
+                object obj = ResourceManager.GetObject("loading-icon-wait-vector-260nw-1722568561", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

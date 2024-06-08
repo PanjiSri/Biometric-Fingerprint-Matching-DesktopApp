@@ -6,9 +6,9 @@ namespace Tubes3_let_me_seedik
 {
     class BackEnd
     {
-        public float persentase { get; private set; }
-        public string[] biodata { get; private set; }
-        public string pathGambar { get; private set; }
+        public static float persentase { get; private set; }
+        public static string[] biodata { get; private set; }
+        public static string pathGambar { get; private set; }
 
         public BackEnd(bool algoritma) 
         {
@@ -54,9 +54,9 @@ namespace Tubes3_let_me_seedik
                 }
                 else
                 {
-                    int distance = Levenshtein.LevenshteinDistance(wholeImage, wholeImageInput);
+                    int distance = Hamming.HammingDistance(wholeImage, wholeImageInput);
 
-                    float persent = Levenshtein.PersentaseKemiripan(distance, wholeImage, wholeImageInput);
+                    float persent = Hamming.PersentaseKemiripan(distance, wholeImage, wholeImageInput);
 
                     if (maxPersen < persent)
                     {
