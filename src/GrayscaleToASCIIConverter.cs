@@ -70,7 +70,7 @@ public class GrayscaleToASCIIConverter
         }
 
         int middleIndex = asciiImage.Length / 2;
-        int upperMiddleIndex = middleIndex / 2;
+        int upperMiddleIndex = middleIndex * 3/4;
 
         int startIndex = upperMiddleIndex - 15;
 
