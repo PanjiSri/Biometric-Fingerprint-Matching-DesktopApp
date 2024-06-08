@@ -252,7 +252,7 @@ namespace Tubes3_let_me_seedik
             Controls.Add(buttonSearch);
             Margin = new Padding(3, 4, 3, 4);
             Name = "Tubes";
-            Text = "Tubes";
+            Text = "dot";
             Load += Tubes_Load;
             Resize += Tubes_Resize;
             ((System.ComponentModel.ISupportInitialize)pictureBoxbiodata).EndInit();

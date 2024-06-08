@@ -215,6 +215,8 @@ namespace Tubes3_let_me_seedik
             {
                 pictureBoxOutput.Image = src.Properties.Resources.download;
                 pictureBoxbiodata.Image = src.Properties.Resources.download;
+                labelData.Visible = false;
+                labelFormat.Visible = false;
                 labelNilaiKemiripan.Text = ": -";
             }
             
