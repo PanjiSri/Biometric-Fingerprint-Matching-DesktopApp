@@ -105,7 +105,7 @@ public class DatabaseManager
         }
     }
 
-    public void SeedDatabase(string[] names, string[] imagePaths){  
+    public void SeedDatabase(string[] names, string[] imagePaths, string[] dummy_names){  
 
         if(names.Length != imagePaths.Length){
             Console.WriteLine("Panjang nama dummy dan path gambar dummy tidak sama");
@@ -118,7 +118,7 @@ public class DatabaseManager
             for(int i = 0; i < names.Length; i++){
                 string queryFingerprint = "INSERT INTO sidik_jari (berkas_citra, nama) VALUES (@imagePath, @name)";
                 MySqlCommand cmdFingerprint = new MySqlCommand(queryFingerprint, connection);
-                cmdFingerprint.Parameters.AddWithValue("@imagePath", imagePaths[i]);  // Konsisten dengan nama parameter
+                cmdFingerprint.Parameters.AddWithValue("@imagePath", imagePaths[i]); 
                 cmdFingerprint.Parameters.AddWithValue("@name", names[i]);
                 cmdFingerprint.ExecuteNonQuery();
 
@@ -127,7 +127,7 @@ public class DatabaseManager
                 "'O', 'Jl. Merdeka No.10', 'Islam', 'Belum Menikah', 'Mahasiswa', 'Indonesia')";
                 MySqlCommand cmdBiodata = new MySqlCommand(queryBiodata, connection);
                 cmdBiodata.Parameters.AddWithValue("@NIK", $"3201{i}000{i}000{i}");
-                cmdBiodata.Parameters.AddWithValue("@name", names[i]);
+                cmdBiodata.Parameters.AddWithValue("@name", dummy_names[i]);
                 cmdBiodata.ExecuteNonQuery();
             }
         }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using DotNetEnv;
 
 namespace Tubes3_let_me_seedik
 {
@@ -14,12 +15,32 @@ namespace Tubes3_let_me_seedik
         {
             pathGambar = "";
             // string folderPath = "./tes";
-            string targetPath = "./src/citra";
+            string targetPath = "src/citra";
             // List<string> filePaths = FileManager.GetFilePaths(folderPath);
             List<string> targetPaths = FileManager.GetFilePaths(targetPath);
             string input = targetPaths[0];
 
-            DatabaseManager dbManager = new DatabaseManager("Server=127.0.0.1; User=root; Password=; Database=sidik");
+            // DatabaseManager dbManager = new DatabaseManager("Server=127.0.0.1; User=root; Password=; Database=sidik");
+            Env.Load();
+
+            string server = Env.GetString("SERVER");
+            string port = Env.GetString("PORT");
+            string user = Env.GetString("USER");
+            string password = Env.GetString("PASSWORD");
+            string database = Env.GetString("DATABASE");
+
+            string connectionString;
+            if (string.IsNullOrEmpty(port))
+            {
+                connectionString = $"Server={server};User ID={user};Password={password};Database={database};";
+            }
+            else
+            {
+                connectionString = $"Server={server};Port={port};User ID={user};Password={password};Database={database};";
+            }
+
+            DatabaseManager dbManager = new DatabaseManager(connectionString);
+            
             string[] allPath = dbManager.GetAllPath();
             // string[] allName = dbManager.GetAllName();
             // pathGambar = Path.Combine(Path.GetFullPath("../../test"), "100__M_Left_index_finger.bmp");

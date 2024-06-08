@@ -49,7 +49,7 @@ static class Program
         Application.Run(new Tubes());
 
 
-        // string folderPath = "./tes";
+        string folderPath = "./tes";
 
         // Ini buat dapet gambar UJI
 
@@ -76,7 +76,7 @@ static class Program
         // //     Console.WriteLine(path);
         // // }
 
-        // DatabaseManager dbManager = new DatabaseManager("Server=127.0.0.1; User=root; Password=; Database=sidik");
+        // DatabaseManager dbManager = new DatabaseManager("Server=127.0.0.1;Port=3307;User=root;Password=baraja16!;Database=database_sidik_jari");
 
         // // string path_hasil = dbManager.GetName(filePaths[0]);
 
@@ -85,8 +85,8 @@ static class Program
         // dbManager.ClearBiodataTable();
         // dbManager.ClearFingerprintTable();
 
-        // dbManager.SeedDatabase(nama_dummy, path_dummy);
-        // dbManager.SeedDatabase(nama_dummy_alay, path_dummy_alay);
+        // // dbManager.SeedDatabase(nama_dummy, path_dummy);
+        // dbManager.SeedDatabase(nama_dummy, path_dummy_alay, nama_dummy_alay);
 
         // // string[] biodata = dbManager.GetBiodata(path_hasil);
 
