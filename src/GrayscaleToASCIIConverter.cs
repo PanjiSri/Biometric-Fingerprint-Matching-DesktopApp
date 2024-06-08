@@ -59,4 +59,66 @@ public class GrayscaleToASCIIConverter
 
         return bestSegment;
     }
+
+    public string GetUpperMiddleSegment(string imagePath)
+    {
+        string asciiImage = ConvertToASCII(imagePath);
+
+        if (asciiImage.Length < 30)
+        {
+            return asciiImage;
+        }
+
+        int middleIndex = asciiImage.Length / 2;
+        int upperMiddleIndex = middleIndex / 2;
+
+        int startIndex = upperMiddleIndex - 15;
+
+        if (startIndex < 0)
+        {
+            startIndex = 0;
+        }
+
+        int countSegment = 30;
+
+        if (startIndex + 30 > asciiImage.Length)
+        {
+            countSegment = asciiImage.Length - startIndex;
+        }
+
+        string upperMiddleSegment = asciiImage.Substring(startIndex, countSegment);
+
+        return upperMiddleSegment;
+    }
+
+    public string GetLowerMiddleSegment(string imagePath)
+    {
+        string asciiImage = ConvertToASCII(imagePath);
+
+        if (asciiImage.Length < 30)
+        {
+            return asciiImage;
+        }
+
+        int middleIndex = asciiImage.Length / 2;
+        int lowerMiddleIndex = middleIndex + (middleIndex / 2);
+
+        int startIndex = lowerMiddleIndex - 15;
+
+        if (startIndex < 0)
+        {
+            startIndex = 0;
+        }
+
+        int countSegment = 30;
+
+        if (startIndex + 30 > asciiImage.Length)
+        {
+            countSegment = asciiImage.Length - startIndex;
+        }
+
+        string lowerMiddleSegment = asciiImage.Substring(startIndex, countSegment);
+
+        return lowerMiddleSegment;
+    }
 }

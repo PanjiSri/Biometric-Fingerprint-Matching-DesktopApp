@@ -40,11 +40,11 @@ namespace Tubes3_let_me_seedik
             }
 
             DatabaseManager dbManager = new DatabaseManager(connectionString);
-            
+
             string[] allPath = dbManager.GetAllPath();
             // string[] allName = dbManager.GetAllName();
             // pathGambar = Path.Combine(Path.GetFullPath("../../test"), "100__M_Left_index_finger.bmp");
-            int position;
+            int position = -1;
             float maxPersen = 0;
             string real_name = "";
             GrayscaleToASCIIConverter asciiConverter = new GrayscaleToASCIIConverter();        
@@ -52,15 +52,39 @@ namespace Tubes3_let_me_seedik
             foreach(var path in allPath){
                 string wholeImage = asciiConverter.ConvertToASCII(path);
                 string bestSegment = asciiConverter.GetBestSegment(input);
+                string upperMiddleSegment = asciiConverter.GetUpperMiddleSegment(input);
+                string lowerMiddelSegment = asciiConverter.GetLowerMiddleSegment(input);
                 string wholeImageInput = asciiConverter.ConvertToASCII(input);
 
-                if (algoritma)
-                {
-                    position = KMP.KmpMatch(wholeImage, bestSegment);
-                }
-                else
-                {
-                    position = BM.BmMatch(wholeImage, bestSegment);
+                for(int i = 0; i < 3; i++){
+                    if (algoritma)
+                    {   
+                        if(i == 0){
+                            position = KMP.KmpMatch(wholeImage, bestSegment);
+                        }
+                        else if( i == 1){
+                            position = KMP.KmpMatch(wholeImage, upperMiddleSegment);
+                        }
+                        else {
+                            position = KMP.KmpMatch(wholeImage, lowerMiddelSegment);
+                        }
+                    }
+                    else
+                    {
+                        if(i == 0){
+                            position = BM.BmMatch(wholeImage, bestSegment);
+                        }
+                        else if( i == 1){
+                            position = BM.BmMatch(wholeImage, upperMiddleSegment);
+                        }
+                        else {
+                            position = BM.BmMatch(wholeImage, lowerMiddelSegment);
+                        }
+                    }
+
+                    if(position != -1){
+                        break;
+                    }
                 }
 
                 if (position != -1)
