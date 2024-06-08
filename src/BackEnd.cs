@@ -28,6 +28,7 @@ namespace Tubes3_let_me_seedik
             string user = Env.GetString("USER");
             string password = Env.GetString("PASSWORD");
             string database = Env.GetString("DATABASE");
+            string key = Env.GetString("KEY");
 
             string connectionString;
             if (string.IsNullOrEmpty(port))
@@ -117,9 +118,11 @@ namespace Tubes3_let_me_seedik
             Regexp r = new Regexp();
             string name_regex = r.createRegex(real_name);
             string alay_name = "";
+            XORChiper crypto = new XORChiper();
             foreach (var name in allName) {
-                if (r.isMatch(name, name_regex)) {
-                    alay_name = name;
+                string name_decrypted = crypto.Decrypt(name, key);
+                if (r.isMatch(name_decrypted, name_regex)) {
+                    alay_name = name_decrypted;
                     break;
                 }
             }
@@ -129,9 +132,24 @@ namespace Tubes3_let_me_seedik
             }
 
             //INI REAL_BIODATA BUAT BIODATANYA
+            Console.WriteLine(alay_name);
+            alay_name = crypto.Encrypt(alay_name, key);
             biodata = dbManager.GetBiodata(alay_name);
+            Console.WriteLine(biodata[0]);
+            biodata[0] = crypto.Decrypt(biodata[0], key);
+            Console.WriteLine(biodata[0]);
             biodata[1] = real_name;
             Console.WriteLine(biodata[1]);
+            biodata[2] = crypto.Decrypt(biodata[2], key);
+            Console.WriteLine(biodata[2]);
+            // biodata[4] = crypto.Decrypt(biodata[4], key);
+            // Console.WriteLine(biodata[4]);
+            biodata[5] = crypto.Decrypt(biodata[5], key);
+            Console.WriteLine(biodata[5]);
+            biodata[6] = crypto.Decrypt(biodata[6], key);
+            biodata[7] = crypto.Decrypt(biodata[7], key);
+            biodata[9] = crypto.Decrypt(biodata[9], key);
+            biodata[10] = crypto.Decrypt(biodata[10], key);
             // string[] real_biodata = dbManager.GetBiodata(alay_name);
             // String pattern = "Ini siapa";
             // String text = "Ini siapa sih";

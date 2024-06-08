@@ -42,31 +42,46 @@ static class Program
         //{
         //    Console.WriteLine($"Pattern starts at position {position + 1}");
         //}
-
+        
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
-
         Application.Run(new Tubes());
 
+        // string originalText = "3201300030003";
+        // string key = "masihsanaslingawi";
 
-        string folderPath = "./tes";
+        // // Encrypt the original text
+        // string encryptedText = XORChiper.Encrypt(originalText, key, 16);
+        // Console.WriteLine($"Encrypted Text: {encryptedText}");
 
-        // Ini buat dapet gambar UJI
+        // // Decrypt the encrypted text
+        // string decryptedText = XORChiper.Decrypt(encryptedText, key);
+        // Console.WriteLine($"Decrypted Text: {decryptedText}");
 
-        // string folderPath = "./citra";
+
+        // string folderPath = "./tes";
+
+        // // Ini buat dapet gambar UJI
+
+        // // string folderPath = "./citra";
 
         // List<string> filePaths = FileManager.GetFilePaths(folderPath);
 
 
 
-        // List<string> filePaths = FileManager.GetFilePaths(folderPath);
-        // string test_dummy = filePaths[2];
+        // // List<string> filePaths = FileManager.GetFilePaths(folderPath);
+        // // string test_dummy = filePaths[2];
 
+        // string key = "masihsanaslingawi";
         // string[] nama_dummy = new string[] {"sigit rendang", "mr ironi", "mas ambatron", "ngawi musikal", "ihsan ganteng"};
-        // string[] path_dummy = new string[] {filePaths[0], filePaths[1], filePaths[2], filePaths[3], filePaths[4]};
+        // // string[] path_dummy = new string[] {filePaths[0], filePaths[1], filePaths[2], filePaths[3], filePaths[4]};
 
         // string[] nama_dummy_alay = new string[] {"5gt rnDn6", "Mr 1R0n1", "Ma5 ambtroN", "n6w mu5k4l", "1h54n 6nTEn6"};
         // string[] path_dummy_alay = new string[] {filePaths[0], filePaths[1], filePaths[2], filePaths[3], filePaths[4]};
+
+        // for(int i = 0; i < 5;i++){
+        //     nama_dummy_alay[i] = XORChiper.Encrypt(nama_dummy_alay[i], key);
+        // }
 
         // // foreach(var nama in nama_dummy){
         // //     Console.WriteLine(nama);
@@ -78,15 +93,16 @@ static class Program
 
         // DatabaseManager dbManager = new DatabaseManager("Server=127.0.0.1;Port=3307;User=root;Password=baraja16!;Database=database_sidik_jari");
 
-        // // string path_hasil = dbManager.GetName(filePaths[0]);
+        // // // string path_hasil = dbManager.GetName(filePaths[0]);
 
-        // // Console.WriteLine(path_hasil);
+        // // // Console.WriteLine(path_hasil);
 
         // dbManager.ClearBiodataTable();
         // dbManager.ClearFingerprintTable();
 
-        // // dbManager.SeedDatabase(nama_dummy, path_dummy);
+        // // // dbManager.SeedDatabase(nama_dummy, path_dummy);
         // dbManager.SeedDatabase(nama_dummy, path_dummy_alay, nama_dummy_alay);
+        // dbManager.EncryptAndUpdateBiodata(key);
 
         // // string[] biodata = dbManager.GetBiodata(path_hasil);
 

@@ -268,4 +268,95 @@ public class DatabaseManager
         return names.ToArray(); 
     }
 
+    private class BiodataRecord
+    {
+        public string NIK { get; set; }
+        public string Nama { get; set; }
+        public string TempatLahir { get; set; }
+        public string GolonganDarah { get; set; }
+        public string Alamat { get; set; }
+        public string Agama { get; set; }
+        public string Pekerjaan { get; set; }
+        public string Kewarganegaraan { get; set; }
+    }
+
+    public void EncryptAndUpdateBiodata(string key)
+    {
+        try
+        {
+            OpenConnection();
+
+            XORChiper crypto = new XORChiper();
+
+            string selectQuery = "SELECT NIK, nama, tempat_lahir, golongan_darah, alamat, agama, pekerjaan, kewarganegaraan FROM biodata";
+            using (MySqlCommand selectCmd = new MySqlCommand(selectQuery, connection))
+            using (MySqlDataReader reader = selectCmd.ExecuteReader())
+            {
+                List<BiodataRecord> records = new List<BiodataRecord>();
+
+                while (reader.Read())
+                {
+                    records.Add(new BiodataRecord
+                    {
+                        NIK = reader["NIK"].ToString(),
+                        Nama = reader["nama"].ToString(),
+                        TempatLahir = reader["tempat_lahir"].ToString(),
+                        GolonganDarah = reader["golongan_darah"].ToString(),
+                        Alamat = reader["alamat"].ToString(),
+                        Agama = reader["agama"].ToString(),
+                        Pekerjaan = reader["pekerjaan"].ToString(),
+                        Kewarganegaraan = reader["kewarganegaraan"].ToString()
+                    });
+                }
+                reader.Close();
+
+                foreach (var record in records)
+                {
+                    string encryptedNIK = crypto.Encrypt(record.NIK, key, 16);
+                    string encryptedNama = crypto.Encrypt(record.Nama, key);
+                    string encryptedTempatLahir = crypto.Encrypt(record.TempatLahir, key);
+                    string encryptedGolonganDarah = crypto.Encrypt(record.GolonganDarah, key);
+                    string encryptedAlamat = crypto.Encrypt(record.Alamat, key);
+                    string encryptedAgama = crypto.Encrypt(record.Agama, key);
+                    string encryptedPekerjaan = crypto.Encrypt(record.Pekerjaan, key);
+                    string encryptedKewarganegaraan = crypto.Encrypt(record.Kewarganegaraan, key);
+
+                    string updateQuery = "UPDATE biodata SET " +
+                                        "NIK = @encryptedNIK, " +
+                                        "nama = @encryptedNama, " +
+                                        "tempat_lahir = @encryptedTempatLahir, " +
+                                        "golongan_darah = @encryptedGolonganDarah, " +
+                                        "alamat = @encryptedAlamat, " +
+                                        "agama = @encryptedAgama, " +
+                                        "pekerjaan = @encryptedPekerjaan, " +
+                                        "kewarganegaraan = @encryptedKewarganegaraan " +
+                                        "WHERE NIK = @originalNIK";
+
+                    using (MySqlCommand updateCmd = new MySqlCommand(updateQuery, connection))
+                    {
+                        updateCmd.Parameters.AddWithValue("@originalNIK", record.NIK);
+                        updateCmd.Parameters.AddWithValue("@encryptedNIK", encryptedNIK);
+                        updateCmd.Parameters.AddWithValue("@encryptedNama", encryptedNama);
+                        updateCmd.Parameters.AddWithValue("@encryptedTempatLahir", encryptedTempatLahir);
+                        updateCmd.Parameters.AddWithValue("@encryptedGolonganDarah", encryptedGolonganDarah);
+                        updateCmd.Parameters.AddWithValue("@encryptedAlamat", encryptedAlamat);
+                        updateCmd.Parameters.AddWithValue("@encryptedAgama", encryptedAgama);
+                        updateCmd.Parameters.AddWithValue("@encryptedPekerjaan", encryptedPekerjaan);
+                        updateCmd.Parameters.AddWithValue("@encryptedKewarganegaraan", encryptedKewarganegaraan);
+
+                        updateCmd.ExecuteNonQuery();
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+            throw;
+        }
+        finally
+        {
+            CloseConnection();
+        }
+    }
 }
