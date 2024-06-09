@@ -514,37 +514,6 @@ public class DatabaseManager
         }
     }
 
-    public string[] GetAllNamesFromSidikJari()
-    {
-        try
-        {
-            OpenConnection();
-            
-            string query = "SELECT nama FROM sidik_jari";
-            MySqlCommand cmd = new MySqlCommand(query, connection);
-            MySqlDataReader reader = cmd.ExecuteReader();
-
-            List<string> names = new List<string>();
-            
-            while (reader.Read())
-            {
-                names.Add(reader["nama"].ToString());
-            }
-            
-            reader.Close();
-            return names.ToArray();
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error: {ex.Message}");
-            throw;
-        }
-        finally
-        {
-            CloseConnection();
-        }
-    }
-
     public void SeedManySidik_JariTXT(string[] imagePaths, string[] names)
     {
         if (imagePaths.Length < 600 || names.Length < 600)
