@@ -161,7 +161,14 @@ namespace Tubes3_let_me_seedik
         private void backgroundWorkerSearch_DoWork(object sender, DoWorkEventArgs e)
         {
             Stopwatch timer = Stopwatch.StartNew();
-            BackEnd backEnd = new BackEnd(isKMP);
+            if (!isEnkripsi)
+            {
+                BackEnd backEnd = new BackEnd(isKMP);
+            }
+            else
+            {
+                BackEndBonus backEnd = new BackEndBonus(isKMP);
+            }
             timer.Stop();
             long timeSpan = timer.ElapsedMilliseconds;
             int waktu = (int)timeSpan;
@@ -229,11 +236,11 @@ namespace Tubes3_let_me_seedik
             string teks;
             if (!isEnkripsi)
             {
-                teks = "Apa kamu yakin ingin mengenkripsi data?";
+                teks = "Apa kamu yakin ingin mengenkripsi database?";
             }
             else
             {
-                teks = "Apa kamu yakin ingin mendeskripsi data?";
+                teks = "Apa kamu yakin ingin mendeskripsi database?";
             }
             DialogResult dr = MessageBox.Show(teks, "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -258,6 +265,7 @@ namespace Tubes3_let_me_seedik
                 }
 
                 DatabaseManager dbManager = new DatabaseManager(connectionString);
+
                 if (!isEnkripsi)
                 {
                     Bonus.Text = "Deskripsi";

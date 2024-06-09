@@ -244,7 +244,7 @@ namespace Tubes3_let_me_seedik
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.PaleVioletRed;
+            BackColor = SystemColors.Control;
             ClientSize = new Size(889, 562);
             Controls.Add(Bonus);
             Controls.Add(buttonAboutUs);
