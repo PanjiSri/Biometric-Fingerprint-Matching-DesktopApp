@@ -6,3 +6,4 @@ testcase/
 *.user
 *.suo
 *.userosscache
+*.env
