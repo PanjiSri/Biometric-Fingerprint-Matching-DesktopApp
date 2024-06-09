@@ -43,9 +43,9 @@ static class Program
         //    Console.WriteLine($"Pattern starts at position {position + 1}");
         //}
         
-        Application.EnableVisualStyles();
-        Application.SetCompatibleTextRenderingDefault(false);
-        Application.Run(new Tubes());
+        // Application.EnableVisualStyles();
+        // Application.SetCompatibleTextRenderingDefault(false);
+        // Application.Run(new Tubes());
 
         // string originalText = "3201300030003";
         // string key = "masihsanaslingawi";
@@ -59,13 +59,20 @@ static class Program
         // Console.WriteLine($"Decrypted Text: {decryptedText}");
 
 
-        // string folderPath = "./tes";
+        string folderPath = "./test";
 
         // // Ini buat dapet gambar UJI
 
         // // string folderPath = "./citra";
 
-        // List<string> filePaths = FileManager.GetFilePaths(folderPath);
+        List<string> filePaths = FileManager.GetRightThumbFingerFiles(folderPath);
+
+        // Console.WriteLine(filePaths.Count);
+        // for(int i = 500; i < 600; i++){
+        //     Console.WriteLine(filePaths[i]);
+        // }
+        
+        // String[] nama_dummy_alay = FileManager.ReadFileToArray("src/namaSeeding.txt");
 
 
 
@@ -83,28 +90,36 @@ static class Program
         //     nama_dummy_alay[i] = XORChiper.Encrypt(nama_dummy_alay[i], key);
         // }
 
-        // // foreach(var nama in nama_dummy){
-        // //     Console.WriteLine(nama);
-        // // }
+        // foreach(var nama in nama_dummy_alay){
+        //     Console.WriteLine(nama);
+        // }
 
         // // foreach(var path in path_dummy){
         // //     Console.WriteLine(path);
         // // }
 
-        // DatabaseManager dbManager = new DatabaseManager("Server=127.0.0.1;Port=3307;User=root;Password=baraja16!;Database=database_sidik_jari");
+        DatabaseManager dbManager = new DatabaseManager("Server=127.0.0.1;Port=3307;User=root;Password=baraja16!;Database=database_sidik_jari");
 
-        // // // string path_hasil = dbManager.GetName(filePaths[0]);
+        // // // // string path_hasil = dbManager.GetName(filePaths[0]);
 
-        // // // Console.WriteLine(path_hasil);
+        // // // // Console.WriteLine(path_hasil);
 
-        // dbManager.ClearBiodataTable();
+        // // dbManager.ClearBiodataTable();
         // dbManager.ClearFingerprintTable();
 
-        // // // dbManager.SeedDatabase(nama_dummy, path_dummy);
-        // dbManager.SeedDatabase(nama_dummy, path_dummy_alay, nama_dummy_alay);
+        // // // // // // dbManager.SeedDatabase(nama_dummy, path_dummy);
+        // dbManager.SeedManySidik_JariTXT(filePaths.ToArray(), nama_dummy_alay);
         // dbManager.EncryptAndUpdateBiodata(key);
 
         // // string[] biodata = dbManager.GetBiodata(path_hasil);
+
+        // string[] nama = dbManager.GetAllNamesFromSidikJari();
+
+        // dbManager.SeedManyBiodata(nama);
+
+        // for(int i = 0; i < 600; i++){
+        //     Console.WriteLine(nama[i]);
+        // }
 
         // // if (biodata != null)
         // // {
