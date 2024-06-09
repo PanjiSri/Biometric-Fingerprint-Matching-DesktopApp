@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DotNetEnv;
 using Org.BouncyCastle.Crypto.Agreement.Srp;
 
 namespace Tubes3_let_me_seedik
@@ -18,6 +19,7 @@ namespace Tubes3_let_me_seedik
         private List<ControlInfo> controlInfos = new List<ControlInfo>();
         private Size initialFormSize;
         private bool isKMP = true;
+        private bool isEnkripsi = false;
         private readonly string targetFolderPath = System.IO.Path.GetFullPath("src/citra");
 
         public Tubes()
@@ -169,7 +171,7 @@ namespace Tubes3_let_me_seedik
 
         private void backgroundWorkerSearch_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            
+
             if (BackEnd.persentase >= 80)
             {
                 float kemiripan = BackEnd.persentase;
@@ -219,7 +221,56 @@ namespace Tubes3_let_me_seedik
                 labelFormat.Visible = false;
                 labelNilaiKemiripan.Text = ": -";
             }
-            
+
+        }
+
+        private void Bonus_Click(object sender, EventArgs e)
+        {
+            string teks;
+            if (!isEnkripsi)
+            {
+                teks = "Apa kamu yakin ingin mengenkripsi data?";
+            }
+            else
+            {
+                teks = "Apa kamu yakin ingin mendeskripsi data?";
+            }
+            DialogResult dr = MessageBox.Show(teks, "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dr == DialogResult.Yes)
+            {
+                Env.Load();
+
+                string server = Env.GetString("SERVER");
+                string port = Env.GetString("PORT");
+                string user = Env.GetString("USER");
+                string password = Env.GetString("PASSWORD");
+                string database = Env.GetString("DATABASE");
+
+                string connectionString;
+                if (string.IsNullOrEmpty(port))
+                {
+                    connectionString = $"Server={server};User ID={user};Password={password};Database={database};";
+                }
+                else
+                {
+                    connectionString = $"Server={server};Port={port};User ID={user};Password={password};Database={database};";
+                }
+
+                DatabaseManager dbManager = new DatabaseManager(connectionString);
+                if (!isEnkripsi)
+                {
+                    Bonus.Text = "Deskripsi";
+                    isEnkripsi = true;
+                }
+                else
+                {
+                    Bonus.Text = "Enkripsi";
+                    isEnkripsi = false;
+                }
+
+            }
+
         }
     }
 

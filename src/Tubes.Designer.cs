@@ -46,6 +46,7 @@ namespace Tubes3_let_me_seedik
             labelData = new Label();
             buttonAboutUs = new System.Windows.Forms.Button();
             backgroundWorkerSearch = new System.ComponentModel.BackgroundWorker();
+            Bonus = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)pictureBoxbiodata).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxOutput).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxInput).BeginInit();
@@ -79,7 +80,7 @@ namespace Tubes3_let_me_seedik
             // buttonBM
             // 
             buttonBM.Anchor = AnchorStyles.None;
-            buttonBM.Location = new Point(301, 467);
+            buttonBM.Location = new Point(301, 466);
             buttonBM.Margin = new Padding(0, 4, 3, 4);
             buttonBM.Name = "buttonBM";
             buttonBM.Size = new Size(78, 55);
@@ -229,12 +230,23 @@ namespace Tubes3_let_me_seedik
             backgroundWorkerSearch.DoWork += backgroundWorkerSearch_DoWork;
             backgroundWorkerSearch.RunWorkerCompleted += backgroundWorkerSearch_RunWorkerCompleted;
             // 
+            // Bonus
+            // 
+            Bonus.Location = new Point(743, 32);
+            Bonus.Name = "Bonus";
+            Bonus.Size = new Size(112, 36);
+            Bonus.TabIndex = 17;
+            Bonus.Text = "Enkripsi";
+            Bonus.UseVisualStyleBackColor = true;
+            Bonus.Click += Bonus_Click;
+            // 
             // Tubes
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Control;
+            BackColor = Color.PaleVioletRed;
             ClientSize = new Size(889, 562);
+            Controls.Add(Bonus);
             Controls.Add(buttonAboutUs);
             Controls.Add(labelData);
             Controls.Add(labelFormat);
@@ -285,6 +297,7 @@ namespace Tubes3_let_me_seedik
         private System.Windows.Forms.Label labelData;
         private System.Windows.Forms.Button buttonAboutUs;
         private System.ComponentModel.BackgroundWorker backgroundWorkerSearch;
+        private System.Windows.Forms.Button Bonus;
     }
 }
 
