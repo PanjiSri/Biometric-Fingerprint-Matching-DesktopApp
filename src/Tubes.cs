@@ -135,6 +135,8 @@ namespace Tubes3_let_me_seedik
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             buttonSearch.Enabled = false;
+            labelData.Visible = false;
+            labelFormat.Visible = false;
             pictureBoxOutput.Image = src.Properties.Resources.loading_icon_wait_vector_260nw_1722568561;
             pictureBoxbiodata.Image = src.Properties.Resources.loading_icon_wait_vector_260nw_1722568561;
             backgroundWorkerSearch.RunWorkerAsync();
