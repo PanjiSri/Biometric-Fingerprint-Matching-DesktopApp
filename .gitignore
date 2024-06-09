@@ -1,7 +1,9 @@
 .vs/
 bin/
 obj/
+test/
+testcase/
 *.user
 *.suo
 *.userosscache
-test/
+*.env

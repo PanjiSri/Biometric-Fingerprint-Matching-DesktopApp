@@ -181,57 +181,75 @@ namespace Tubes3_let_me_seedik
 
         private void backgroundWorkerSearch_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
-            if (BackEnd.persentase >= 80)
-            {
-                float kemiripan = BackEnd.persentase;
-                labelNilaiKemiripan.Text = ": " + Math.Round(kemiripan, 2).ToString() + " %";
-                pictureBoxbiodata.Image = null;
-                // string nik = "1234567890123456";
-                // string nama = "Rijal";
-                // string tempatlahir = "Bandung";
-                // string tanggallahir = "31 Januari 2001";
-                // string gender = "Laki-laki";
-                // string goldar = "O";
-                // string alamat = "Cisitu";
-                // string agama = "Islam";
-                // string status = "Menikah";
-                // string pekerjaan = "PNS";
-                // string kwn = "Indonesia";
-                string nik = BackEnd.biodata[0];
-                string nama = BackEnd.biodata[1];
-                string tempatlahir = BackEnd.biodata[2];
-                string tanggallahir = BackEnd.biodata[3];
-                string gender = BackEnd.biodata[4];
-                string goldar = BackEnd.biodata[5];
-                string alamat = BackEnd.biodata[6];
-                string agama = BackEnd.biodata[7];
-                string status = BackEnd.biodata[8];
-                string pekerjaan = BackEnd.biodata[9];
-                string kwn = BackEnd.biodata[10];
-                // labelFormat.Text = $"NIK : {nik}\nNama : {nama}\nTempat Lahir : {tempatlahir}\nTanggal Lahir : {tanggallahir}\nJenis Kelamin : {gender}\nGolongan Darah : {goldar}\nAlamat : {alamat}\nAgama : {agama}\nStatus Perkawinan : {status}\nPekerjaan : {pekerjaan}\nKewarganegaraan : {kwn}";
-                labelFormat.Text = "NIK\nNama\nTempat Lahir\nTanggal Lahir\nJenis Kelamin\nGolongan Darah\nAlamat\nAgama\nStatus Perkawinan\nPekerjaan\nKewarganegaraan";
-                labelFormat.Visible = true;
-                labelData.Visible = true;
-                labelData.Text = $": {nik}\n: {nama}\n: {tempatlahir}\n: {tanggallahir}\n: {gender}\n: {goldar}\n: {alamat}\n: {agama}\n: {status}\n: {pekerjaan}\n: {kwn}";
-                pictureBoxbiodata.BorderStyle = BorderStyle.FixedSingle;
-                // labelFormat.BorderStyle = BorderStyle.FixedSingle;
-                // labelData.BorderStyle = BorderStyle.FixedSingle;
-                /*labelFormat.Font = new Font("Microsoft Sans Serif", 8, FontStyle.Regular);*/
-                /*String path = Path.GetFullPath("../../tes"); 
-                pictureBoxOutput.Image = new Bitmap(Path.Combine(path, "100__M_Left_index_finger.bmp"));*/
-                pictureBoxOutput.Image = new Bitmap(BackEnd.pathGambar);
-                // pictureBoxOutput.SizeMode = PictureBoxSizeMode.Zoom;
+            if(isEnkripsi) {
+                if (BackEndBonus.persentase >= 80)
+                {
+                    float kemiripan = BackEndBonus.persentase;
+                    labelNilaiKemiripan.Text = ": " + Math.Round(kemiripan, 2).ToString() + " %";
+                    pictureBoxbiodata.Image = null;
+                    string nik = BackEndBonus.biodata[0];
+                    string nama = BackEndBonus.biodata[1];
+                    string tempatlahir = BackEndBonus.biodata[2];
+                    string tanggallahir = BackEndBonus.biodata[3];
+                    string gender = BackEndBonus.biodata[4];
+                    string goldar = BackEndBonus.biodata[5];
+                    string alamat = BackEndBonus.biodata[6];
+                    string agama = BackEndBonus.biodata[7];
+                    string status = BackEndBonus.biodata[8];
+                    string pekerjaan = BackEndBonus.biodata[9];
+                    string kwn = BackEndBonus.biodata[10];
+                    // labelFormat.Text = $"NIK : {nik}\nNama : {nama}\nTempat Lahir : {tempatlahir}\nTanggal Lahir : {tanggallahir}\nJenis Kelamin : {gender}\nGolongan Darah : {goldar}\nAlamat : {alamat}\nAgama : {agama}\nStatus Perkawinan : {status}\nPekerjaan : {pekerjaan}\nKewarganegaraan : {kwn}";
+                    labelFormat.Text = "NIK\nNama\nTempat Lahir\nTanggal Lahir\nJenis Kelamin\nGolongan Darah\nAlamat\nAgama\nStatus Perkawinan\nPekerjaan\nKewarganegaraan";
+                    labelFormat.Visible = true;
+                    labelData.Visible = true;
+                    labelData.Text = $": {nik}\n: {nama}\n: {tempatlahir}\n: {tanggallahir}\n: {gender}\n: {goldar}\n: {alamat}\n: {agama}\n: {status}\n: {pekerjaan}\n: {kwn}";
+                    pictureBoxbiodata.BorderStyle = BorderStyle.FixedSingle;
+                    pictureBoxOutput.Image = new Bitmap(BackEndBonus.pathGambar);
+                }
+                else
+                {
+                    pictureBoxOutput.Image = src.Properties.Resources.download;
+                    pictureBoxbiodata.Image = src.Properties.Resources.download;
+                    labelData.Visible = false;
+                    labelFormat.Visible = false;
+                    labelNilaiKemiripan.Text = ": -";
+                }
             }
-            else
-            {
-                pictureBoxOutput.Image = src.Properties.Resources.download;
-                pictureBoxbiodata.Image = src.Properties.Resources.download;
-                labelData.Visible = false;
-                labelFormat.Visible = false;
-                labelNilaiKemiripan.Text = ": -";
-            }
+            else {
 
+                if (BackEnd.persentase >= 80)
+                {
+                    float kemiripan = BackEnd.persentase;
+                    labelNilaiKemiripan.Text = ": " + Math.Round(kemiripan, 2).ToString() + " %";
+                    pictureBoxbiodata.Image = null;
+                    string nik = BackEnd.biodata[0];
+                    string nama = BackEnd.biodata[1];
+                    string tempatlahir = BackEnd.biodata[2];
+                    string tanggallahir = BackEnd.biodata[3];
+                    string gender = BackEnd.biodata[4];
+                    string goldar = BackEnd.biodata[5];
+                    string alamat = BackEnd.biodata[6];
+                    string agama = BackEnd.biodata[7];
+                    string status = BackEnd.biodata[8];
+                    string pekerjaan = BackEnd.biodata[9];
+                    string kwn = BackEnd.biodata[10];
+                    // labelFormat.Text = $"NIK : {nik}\nNama : {nama}\nTempat Lahir : {tempatlahir}\nTanggal Lahir : {tanggallahir}\nJenis Kelamin : {gender}\nGolongan Darah : {goldar}\nAlamat : {alamat}\nAgama : {agama}\nStatus Perkawinan : {status}\nPekerjaan : {pekerjaan}\nKewarganegaraan : {kwn}";
+                    labelFormat.Text = "NIK\nNama\nTempat Lahir\nTanggal Lahir\nJenis Kelamin\nGolongan Darah\nAlamat\nAgama\nStatus Perkawinan\nPekerjaan\nKewarganegaraan";
+                    labelFormat.Visible = true;
+                    labelData.Visible = true;
+                    labelData.Text = $": {nik}\n: {nama}\n: {tempatlahir}\n: {tanggallahir}\n: {gender}\n: {goldar}\n: {alamat}\n: {agama}\n: {status}\n: {pekerjaan}\n: {kwn}";
+                    pictureBoxbiodata.BorderStyle = BorderStyle.FixedSingle;
+                    pictureBoxOutput.Image = new Bitmap(BackEnd.pathGambar);
+                }
+                else
+                {
+                    pictureBoxOutput.Image = src.Properties.Resources.download;
+                    pictureBoxbiodata.Image = src.Properties.Resources.download;
+                    labelData.Visible = false;
+                    labelFormat.Visible = false;
+                    labelNilaiKemiripan.Text = ": -";
+                }
+            }
         }
 
         private void Bonus_Click(object sender, EventArgs e)
@@ -256,8 +274,18 @@ namespace Tubes3_let_me_seedik
                 string user = Env.GetString("USER");
                 string password = Env.GetString("PASSWORD");
                 string database = Env.GetString("DATABASE");
+                string key = Env.GetString("KEY");
 
                 string connectionString;
+
+                int intKey;
+                bool success = int.TryParse(key, out intKey);
+
+                if (!success)
+                {
+                    Console.WriteLine("Format Key Tidak Valid");
+                }
+                
                 if (string.IsNullOrEmpty(port))
                 {
                     connectionString = $"Server={server};User ID={user};Password={password};Database={database};";
@@ -271,11 +299,13 @@ namespace Tubes3_let_me_seedik
 
                 if (!isEnkripsi)
                 {
+                    dbManager.EncryptAndUpdateBiodata(intKey);
                     Bonus.Text = "Deskripsi";
                     isEnkripsi = true;
                 }
                 else
                 {
+                    dbManager.DecryptAndUpdateBiodata(intKey);
                     Bonus.Text = "Enkripsi";
                     isEnkripsi = false;
                 }
