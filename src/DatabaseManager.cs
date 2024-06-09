@@ -418,8 +418,8 @@ public class DatabaseManager
                                         "kewarganegaraan = @decryptedKewarganegaraan " +
                                         "WHERE NIK = @originalNIK";
 
-                    Console.WriteLine($"Original NIK: {record.NIK}, Encrypted NIK: {encryptedNIK}");
-                    
+                    Console.WriteLine($"Encrypted NIK: {record.NIK}, Original NIK: {decryptedNIK}");
+
                     using (MySqlCommand updateCmd = new MySqlCommand(updateQuery, connection))
                     {
                         updateCmd.Parameters.AddWithValue("@originalNIK", record.NIK);
