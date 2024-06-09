@@ -138,8 +138,8 @@ namespace Tubes3_let_me_seedik
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             buttonSearch.Enabled = false;
-            pictureBoxOutput.Image = src.Properties.Resources.loading_icon_wait_vector_260nw_1722568561;
-            pictureBoxbiodata.Image = src.Properties.Resources.loading_icon_wait_vector_260nw_1722568561;
+            pictureBoxOutput.Image = src.Properties.Resources.loading;
+            pictureBoxbiodata.Image = src.Properties.Resources.loading;
             backgroundWorkerSearch.RunWorkerAsync();
             // Thread.Sleep(3000); 
         }
@@ -223,8 +223,8 @@ namespace Tubes3_let_me_seedik
             }
             else
             {
-                pictureBoxOutput.Image = src.Properties.Resources.download;
-                pictureBoxbiodata.Image = src.Properties.Resources.download;
+                pictureBoxOutput.Image = src.Properties.Resources.data_not_found;
+                pictureBoxbiodata.Image = src.Properties.Resources.data_not_found;
                 labelData.Visible = false;
                 labelFormat.Visible = false;
                 labelNilaiKemiripan.Text = ": -";

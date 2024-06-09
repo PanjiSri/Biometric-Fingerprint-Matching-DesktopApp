@@ -63,9 +63,9 @@ namespace Tubes3_let_me_seedik.src.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Desain_tanpa_judul {
+        internal static System.Drawing.Bitmap background {
             get {
-                object obj = ResourceManager.GetObject("Desain tanpa judul", resourceCulture);
+                object obj = ResourceManager.GetObject("background", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace Tubes3_let_me_seedik.src.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap download {
+        internal static System.Drawing.Bitmap data_not_found {
             get {
-                object obj = ResourceManager.GetObject("download", resourceCulture);
+                object obj = ResourceManager.GetObject("data not found", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace Tubes3_let_me_seedik.src.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap loading_icon_wait_vector_260nw_1722568561 {
+        internal static System.Drawing.Bitmap loading {
             get {
-                object obj = ResourceManager.GetObject("loading-icon-wait-vector-260nw-1722568561", resourceCulture);
+                object obj = ResourceManager.GetObject("loading", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace Tubes3_let_me_seedik.src.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Screenshot_2024_05_31_140208 {
+        internal static System.Drawing.Bitmap masukan {
             get {
-                object obj = ResourceManager.GetObject("Screenshot 2024-05-31 140208", resourceCulture);
+                object obj = ResourceManager.GetObject("masukan", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace Tubes3_let_me_seedik.src.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Screenshot_2024_05_31_140225 {
+        internal static System.Drawing.Bitmap keluaran {
             get {
-                object obj = ResourceManager.GetObject("Screenshot 2024-05-31 140225", resourceCulture);
+                object obj = ResourceManager.GetObject("keluaran", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace Tubes3_let_me_seedik.src.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Screenshot_2024_05_31_140236 {
+        internal static System.Drawing.Bitmap list_biodata {
             get {
-                object obj = ResourceManager.GetObject("Screenshot 2024-05-31 140236", resourceCulture);
+                object obj = ResourceManager.GetObject("list biodata", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

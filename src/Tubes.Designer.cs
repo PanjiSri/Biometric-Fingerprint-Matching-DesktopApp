@@ -107,8 +107,8 @@ namespace Tubes3_let_me_seedik
             // pictureBoxbiodata
             // 
             pictureBoxbiodata.Anchor = AnchorStyles.None;
-            pictureBoxbiodata.Image = src.Properties.Resources.Screenshot_2024_05_31_140236;
-            pictureBoxbiodata.InitialImage = src.Properties.Resources.loading_icon_wait_vector_260nw_1722568561;
+            pictureBoxbiodata.Image = src.Properties.Resources.list_biodata;
+            pictureBoxbiodata.InitialImage = src.Properties.Resources.loading;
             pictureBoxbiodata.Location = new Point(532, 95);
             pictureBoxbiodata.Margin = new Padding(3, 4, 3, 4);
             pictureBoxbiodata.Name = "pictureBoxbiodata";
@@ -133,8 +133,8 @@ namespace Tubes3_let_me_seedik
             // pictureBoxOutput
             // 
             pictureBoxOutput.Anchor = AnchorStyles.None;
-            pictureBoxOutput.Image = src.Properties.Resources.Screenshot_2024_05_31_140225;
-            pictureBoxOutput.InitialImage = src.Properties.Resources.loading_icon_wait_vector_260nw_1722568561;
+            pictureBoxOutput.Image = src.Properties.Resources.keluaran;
+            pictureBoxOutput.InitialImage = src.Properties.Resources.loading;
             pictureBoxOutput.Location = new Point(282, 95);
             pictureBoxOutput.Margin = new Padding(3, 4, 3, 4);
             pictureBoxOutput.Name = "pictureBoxOutput";
@@ -180,7 +180,7 @@ namespace Tubes3_let_me_seedik
             // pictureBoxInput
             // 
             pictureBoxInput.Anchor = AnchorStyles.None;
-            pictureBoxInput.Image = src.Properties.Resources.Screenshot_2024_05_31_140208;
+            pictureBoxInput.Image = src.Properties.Resources.masukan;
             pictureBoxInput.Location = new Point(37, 95);
             pictureBoxInput.Margin = new Padding(3, 4, 3, 4);
             pictureBoxInput.Name = "pictureBoxInput";
@@ -253,7 +253,7 @@ namespace Tubes3_let_me_seedik
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.None;
-            pictureBox1.Image = src.Properties.Resources.Desain_tanpa_judul;
+            pictureBox1.Image = src.Properties.Resources.background;
             pictureBox1.Location = new Point(0, -1);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(889, 564);
