@@ -168,10 +168,10 @@ namespace Tubes3_let_me_seedik
             {
                 BackEnd backEnd = new BackEnd(isKMP);
             }
-            /* else
-             {
-                 BackEndBonus backEnd = new BackEndBonus(isKMP);
-             }*/
+            else
+            {
+                BackEndBonus backEnd = new BackEndBonus(isKMP);
+            }
             timer.Stop();
             long timeSpan = timer.ElapsedMilliseconds;
             int waktu = (int)timeSpan;
@@ -261,7 +261,7 @@ namespace Tubes3_let_me_seedik
             }
             else
             {
-                teks = "Apa kamu yakin ingin mendeskripsi database?";
+                teks = "Apa kamu yakin ingin mendekripsi database?";
             }
             DialogResult dr = MessageBox.Show(teks, "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -300,7 +300,7 @@ namespace Tubes3_let_me_seedik
                 if (!isEnkripsi)
                 {
                     dbManager.EncryptAndUpdateBiodata(intKey);
-                    Bonus.Text = "Deskripsi";
+                    Bonus.Text = "Dekripsi";
                     isEnkripsi = true;
                 }
                 else
