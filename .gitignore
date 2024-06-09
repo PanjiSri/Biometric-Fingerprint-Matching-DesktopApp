@@ -1,7 +1,7 @@
 .vs/
 bin/
 obj/
-tes/
+test/
 testcase/
 *.user
 *.suo
