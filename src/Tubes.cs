@@ -61,6 +61,7 @@ namespace Tubes3_let_me_seedik
             {
                 controlInfo.Control.Location = new Point((int)(controlInfo.OriginalLocation.X * widthRatio), (int)(controlInfo.OriginalLocation.Y * heightRatio));
                 controlInfo.Control.Size = new Size((int)(controlInfo.OriginalSize.Width * widthRatio), (int)(controlInfo.OriginalSize.Height * heightRatio));
+
                 // Sesuaikan ukuran font
                 if (controlInfo.Control is Button || controlInfo.Control is Label)
                 {
@@ -165,10 +166,10 @@ namespace Tubes3_let_me_seedik
             {
                 BackEnd backEnd = new BackEnd(isKMP);
             }
-            else
-            {
-                BackEndBonus backEnd = new BackEndBonus(isKMP);
-            }
+            /* else
+             {
+                 BackEndBonus backEnd = new BackEndBonus(isKMP);
+             }*/
             timer.Stop();
             long timeSpan = timer.ElapsedMilliseconds;
             int waktu = (int)timeSpan;
@@ -278,6 +279,16 @@ namespace Tubes3_let_me_seedik
                 }
 
             }
+
+        }
+
+        private void labelData_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
 
         }
     }

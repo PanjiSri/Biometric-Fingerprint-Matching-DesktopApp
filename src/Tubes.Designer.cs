@@ -47,9 +47,11 @@ namespace Tubes3_let_me_seedik
             buttonAboutUs = new System.Windows.Forms.Button();
             backgroundWorkerSearch = new System.ComponentModel.BackgroundWorker();
             Bonus = new System.Windows.Forms.Button();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBoxbiodata).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxOutput).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxInput).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // buttonCitra
@@ -107,10 +109,10 @@ namespace Tubes3_let_me_seedik
             pictureBoxbiodata.Anchor = AnchorStyles.None;
             pictureBoxbiodata.Image = src.Properties.Resources.Screenshot_2024_05_31_140236;
             pictureBoxbiodata.InitialImage = src.Properties.Resources.loading_icon_wait_vector_260nw_1722568561;
-            pictureBoxbiodata.Location = new Point(532, 106);
+            pictureBoxbiodata.Location = new Point(532, 95);
             pictureBoxbiodata.Margin = new Padding(3, 4, 3, 4);
             pictureBoxbiodata.Name = "pictureBoxbiodata";
-            pictureBoxbiodata.Size = new Size(343, 268);
+            pictureBoxbiodata.Size = new Size(343, 299);
             pictureBoxbiodata.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxbiodata.TabIndex = 8;
             pictureBoxbiodata.TabStop = false;
@@ -121,6 +123,7 @@ namespace Tubes3_let_me_seedik
             // 
             labelWaktu.Anchor = AnchorStyles.None;
             labelWaktu.AutoSize = true;
+            labelWaktu.BackColor = Color.Transparent;
             labelWaktu.Location = new Point(592, 471);
             labelWaktu.Name = "labelWaktu";
             labelWaktu.Size = new Size(141, 25);
@@ -145,6 +148,7 @@ namespace Tubes3_let_me_seedik
             // 
             labelJudul.Anchor = AnchorStyles.None;
             labelJudul.AutoSize = true;
+            labelJudul.BackColor = Color.Transparent;
             labelJudul.Location = new Point(232, 32);
             labelJudul.Name = "labelJudul";
             labelJudul.Size = new Size(455, 25);
@@ -155,6 +159,7 @@ namespace Tubes3_let_me_seedik
             // 
             labelNilaiWaktu.Anchor = AnchorStyles.None;
             labelNilaiWaktu.AutoSize = true;
+            labelNilaiWaktu.BackColor = Color.Transparent;
             labelNilaiWaktu.Location = new Point(781, 471);
             labelNilaiWaktu.Name = "labelNilaiWaktu";
             labelNilaiWaktu.Size = new Size(74, 25);
@@ -165,6 +170,7 @@ namespace Tubes3_let_me_seedik
             // 
             labelPersen.Anchor = AnchorStyles.None;
             labelPersen.AutoSize = true;
+            labelPersen.BackColor = Color.Transparent;
             labelPersen.Location = new Point(592, 496);
             labelPersen.Name = "labelPersen";
             labelPersen.Size = new Size(179, 25);
@@ -188,6 +194,7 @@ namespace Tubes3_let_me_seedik
             // 
             labelNilaiKemiripan.Anchor = AnchorStyles.None;
             labelNilaiKemiripan.AutoSize = true;
+            labelNilaiKemiripan.BackColor = Color.Transparent;
             labelNilaiKemiripan.Location = new Point(781, 496);
             labelNilaiKemiripan.Name = "labelNilaiKemiripan";
             labelNilaiKemiripan.Size = new Size(57, 25);
@@ -198,7 +205,8 @@ namespace Tubes3_let_me_seedik
             // 
             labelFormat.Anchor = AnchorStyles.None;
             labelFormat.AutoSize = true;
-            labelFormat.Location = new Point(537, 119);
+            labelFormat.BackColor = Color.Transparent;
+            labelFormat.Location = new Point(545, 119);
             labelFormat.Name = "labelFormat";
             labelFormat.Size = new Size(153, 275);
             labelFormat.TabIndex = 14;
@@ -208,12 +216,14 @@ namespace Tubes3_let_me_seedik
             // labelData
             // 
             labelData.AutoSize = true;
-            labelData.Location = new Point(690, 119);
+            labelData.BackColor = Color.Transparent;
+            labelData.Location = new Point(704, 119);
             labelData.Name = "labelData";
             labelData.Size = new Size(59, 25);
             labelData.TabIndex = 15;
             labelData.Text = "label1";
             labelData.Visible = false;
+            labelData.Click += labelData_Click;
             // 
             // buttonAboutUs
             // 
@@ -240,6 +250,18 @@ namespace Tubes3_let_me_seedik
             Bonus.UseVisualStyleBackColor = true;
             Bonus.Click += Bonus_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Anchor = AnchorStyles.None;
+            pictureBox1.Image = src.Properties.Resources.Desain_tanpa_judul;
+            pictureBox1.Location = new Point(0, -1);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(889, 564);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 18;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
             // Tubes
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -262,6 +284,7 @@ namespace Tubes3_let_me_seedik
             Controls.Add(labelJudul);
             Controls.Add(labelWaktu);
             Controls.Add(buttonSearch);
+            Controls.Add(pictureBox1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "Tubes";
             Text = "dot";
@@ -270,6 +293,7 @@ namespace Tubes3_let_me_seedik
             ((System.ComponentModel.ISupportInitialize)pictureBoxbiodata).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxOutput).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxInput).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -298,6 +322,7 @@ namespace Tubes3_let_me_seedik
         private System.Windows.Forms.Button buttonAboutUs;
         private System.ComponentModel.BackgroundWorker backgroundWorkerSearch;
         private System.Windows.Forms.Button Bonus;
+        private PictureBox pictureBox1;
     }
 }
 
