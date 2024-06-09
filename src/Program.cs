@@ -7,6 +7,7 @@ using System;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Text;
 
 
 static class Program
@@ -42,53 +43,106 @@ static class Program
         //{
         //    Console.WriteLine($"Pattern starts at position {position + 1}");
         //}
-
+        
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
-
         Application.Run(new Tubes());
 
+        // string originalText = "3201300030003";
+        // string key = "masihsanaslingawi";
 
-        string folderPath = "./tes";
+        // // Encrypt the original text
+        // XORChiper crypto = new XORChiper();
+        // string encryptedText = crypto.XORChiperText(originalText, key);
+        // Console.WriteLine($"Encrypted Text: {encryptedText}");
 
-        // Ini buat dapet gambar UJI
+        // // Decrypt the encrypted text
+        // string decryptedText = crypto.XORChiperText(encryptedText, key);
+        // Console.WriteLine($"Decrypted Text: {decryptedText}");
 
-        // string folderPath = "./citra";
+            // CaesarCipher caesarCipher = new CaesarCipher();
+            // string text = "Hello World! 123";
+            // int shift = 18;
 
-        // List<string> filePaths = FileManager.GetFilePaths(folderPath);
+            // string encryptedText = caesarCipher.Encrypt(text, shift);
+            // Console.WriteLine("Encrypted Text: " + encryptedText);
+
+            // string decryptedText = caesarCipher.Decrypt(encryptedText, shift);
+            // Console.WriteLine("Decrypted Text: " + decryptedText);
+
+
+        // string folderPath = "./test";
+
+        // // // Ini buat dapet gambar UJI
+
+        // // // string folderPath = "./citra";
+
+        // List<string> filePaths = FileManager.GetRightThumbFingerFiles(folderPath);
+
+        // // Console.WriteLine(filePaths.Count);
+        // // for(int i = 500; i < 600; i++){
+        // //     Console.WriteLine(filePaths[i]);
+        // // }
+        
+        // // String[] nama_dummy_alay = FileManager.ReadFileToArray("src/namaSeeding.txt");
 
 
 
-        // List<string> filePaths = FileManager.GetFilePaths(folderPath);
-        // string test_dummy = filePaths[2];
+        // // // List<string> filePaths = FileManager.GetFilePaths(folderPath);
+        // // // string test_dummy = filePaths[2];
 
-        // string[] nama_dummy = new string[] {"sigit rendang", "mr ironi", "mas ambatron", "ngawi musikal", "ihsan ganteng"};
-        // string[] path_dummy = new string[] {filePaths[0], filePaths[1], filePaths[2], filePaths[3], filePaths[4]};
+        // // string key = "masihsanaslingawi";
+        // // string[] nama_dummy = new string[] {"sigit rendang", "mr ironi", "mas ambatron", "ngawi musikal", "ihsan ganteng"};
+        // // // string[] path_dummy = new string[] {filePaths[0], filePaths[1], filePaths[2], filePaths[3], filePaths[4]};
 
-        // string[] nama_dummy_alay = new string[] {"5gt rnDn6", "Mr 1R0n1", "Ma5 ambtroN", "n6w mu5k4l", "1h54n 6nTEn6"};
-        // string[] path_dummy_alay = new string[] {filePaths[0], filePaths[1], filePaths[2], filePaths[3], filePaths[4]};
+        // // string[] nama_dummy_alay = new string[] {"5gt rnDn6", "Mr 1R0n1", "Ma5 ambtroN", "n6w mu5k4l", "1h54n 6nTEn6"};
+        // // string[] path_dummy_alay = new string[] {filePaths[0], filePaths[1], filePaths[2], filePaths[3], filePaths[4]};
 
-        // // foreach(var nama in nama_dummy){
+        // // for(int i = 0; i < 5;i++){
+        // //     nama_dummy_alay[i] = XORChiper.Encrypt(nama_dummy_alay[i], key);
+        // // }
+
+        // // foreach(var nama in nama_dummy_alay){
         // //     Console.WriteLine(nama);
         // // }
 
-        // // foreach(var path in path_dummy){
-        // //     Console.WriteLine(path);
-        // // }
+        // // // foreach(var path in path_dummy){
+        // // //     Console.WriteLine(path);
+        // // // }
 
-        // DatabaseManager dbManager = new DatabaseManager("Server=127.0.0.1;Port=3307;User=root;Password=baraja16!;Database=database_sidik_jari");
+        //DatabaseManager dbManager = new DatabaseManager("Server=127.0.0.1;Port=3307;User=root;Password=baraja16!;Database=database_sidik_jari");
 
-        // // string path_hasil = dbManager.GetName(filePaths[0]);
+        // // // // string path_hasil = dbManager.GetName(filePaths[0]);
 
-        // // Console.WriteLine(path_hasil);
+        // // // // Console.WriteLine(path_hasil);
 
-        // dbManager.ClearBiodataTable();
+        // // dbManager.ClearBiodataTable();
         // dbManager.ClearFingerprintTable();
 
-        // // dbManager.SeedDatabase(nama_dummy, path_dummy);
-        // dbManager.SeedDatabase(nama_dummy, path_dummy_alay, nama_dummy_alay);
+        // // // // // // dbManager.SeedDatabase(nama_dummy, path_dummy);
+        // dbManager.SeedManySidik_JariTXT(filePaths.ToArray(), nama_dummy_alay);
+
+
+
+
+            // string decryptedText1 = crypto.Decrypt(encryptedText1, key.Substring(0, plaint_text.Length));
+            // string decryptedText2 = crypto.Decrypt(encryptedText2, key.Substring(0, plaint_text2.Length));
+
+            // Console.WriteLine($"Decrypted text1: {decryptedText1}");
+            // Console.WriteLine($"Decrypted text2: {decryptedText2}");
+
+
+        // dbManager.EncryptAndUpdateBiodata(18);
 
         // // string[] biodata = dbManager.GetBiodata(path_hasil);
+
+        // string[] nama = dbManager.GetAllNamesFromSidikJari();
+
+        // dbManager.SeedManyBiodata(nama);
+
+        // for(int i = 0; i < 600; i++){
+        //     Console.WriteLine(nama[i]);
+        // }
 
         // // if (biodata != null)
         // // {
@@ -266,7 +320,19 @@ static class Program
         //     Console.WriteLine(fileContent);
         // }
 
-        // string fileContent = File.ReadAllText(formattedPath);
+        // // string fileContent = File.ReadAllText(formattedPath);
+        // string text = "3201000000000";
+        // string key = "key";
+
+        // string encryptedText = XorEncryptDecrypt(text, key);
+
+        // // dbManager.SeedTest(encryptedText);
+
+        // Console.WriteLine("Encrypted Text: " + encryptedText);
+
+        // string decryptedText = XorEncryptDecrypt(encryptedText, key);
+        // Console.WriteLine("Decrypted Text: " + decryptedText);
+
 
 
         //dbManager.RetrieveFingerprints();
@@ -275,34 +341,4 @@ static class Program
         //Console.ReadKey();
     }    
 
-    // static int GetBitsPerPixel(Bitmap bitmap)
-    // {
-    //     switch (bitmap.PixelFormat)
-    //     {
-    //         case PixelFormat.Format1bppIndexed:
-    //             return 1;
-    //         case PixelFormat.Format4bppIndexed:
-    //             return 4;
-    //         case PixelFormat.Format8bppIndexed:
-    //             return 8;
-    //         case PixelFormat.Format16bppGrayScale:
-    //         case PixelFormat.Format16bppRgb555:
-    //         case PixelFormat.Format16bppRgb565:
-    //         case PixelFormat.Format16bppArgb1555:
-    //             return 16;
-    //         case PixelFormat.Format24bppRgb:
-    //             return 24;
-    //         case PixelFormat.Format32bppArgb:
-    //         case PixelFormat.Format32bppPArgb:
-    //         case PixelFormat.Format32bppRgb:
-    //             return 32;
-    //         case PixelFormat.Format48bppRgb:
-    //             return 48;
-    //         case PixelFormat.Format64bppArgb:
-    //         case PixelFormat.Format64bppPArgb:
-    //             return 64;
-    //         default:
-    //             throw new ArgumentOutOfRangeException("Unsupported PixelFormat: " + bitmap.PixelFormat);
-    //     }
-    // }
 }
